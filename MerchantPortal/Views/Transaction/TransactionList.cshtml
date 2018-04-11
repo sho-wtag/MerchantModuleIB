@@ -1,0 +1,163 @@
+﻿@model MerchantPortal.Models.TransactionViewModel
+@{
+    ViewData["Title"] = "TransactionList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="header smaller lighter blue">Transaction List</h3>
+        <div class="table-header">
+            Completed Transaction List
+        </div>
+        <table id="dtTable" class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th><input name="select_all" value="1" id="dtTable-select-all" type="checkbox" /></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MerchantName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TerminalName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CurrencyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GLNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EndStamp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrincipalAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ComissionAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VatAmount)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@*<form asp-action="Settle">
+        <input type="hidden" asp-for="Id" />
+
+    </form>*@
+<div class="panel panel-info">
+    <div class="panel-footer">
+        @Html.RadioButtonFor(model => model.SettleStatus, "S", new { @checked = "checked" }) @Html.Label("Settle")
+        @Html.RadioButtonFor(model => model.SettleStatus, "R", false) @Html.Label("Reject") |
+        <button value="save" class="btn btn-success" id="save" name="save">Save</button>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = getDatatable();
+
+            $('#dtTable-select-all').on('click', function () {
+                var rows = table.rows({ 'search': 'applied' }).nodes();
+                $('input[type="checkbox"]', rows).prop('checked', this.checked)
+                    .closest('tr').toggleClass('selected', this.checked);
+
+            });
+
+            $('#dtTable tbody').on('change', 'input[type="checkbox"]', function () {
+                if (!this.checked) {
+                    var el = $('#dtTable-select-all').get(0);
+                    if (el && el.checked && ('indeterminate' in el)) {
+                        el.indeterminate = true;
+                    }
+                }
+            });
+
+            /* $('#dtTable tbody').on('click', 'tr', function () {
+                var $chk = $(this).find('input[type=checkbox]');
+                var stat = $chk.prop('checked');
+                $chk.prop('checked', stat);
+                $(this).toggleClass('selected');
+            });*/
+
+            $('#dtTable').on('click', 'input[type="checkbox"]', function () {
+                $(this).parent().parent().toggleClass('selected');
+            });
+
+            $('#save').on('click', function () {
+                var settleStatus = $('input[name=SettleStatus]:checked').val();
+                if (settleStatus == null || settleStatus == '' || settleStatus == undefined) {
+                    toastr.error('Please select Settle or Reject', 'Error');
+                    return;
+                }
+                var rData = [];
+                $.map(table.rows('.selected').data(), function (item) {
+                    rData.push(item);
+                });
+                if (rData.length <= 0) {
+                    toastr.error('Please select transaction', 'Error');
+                    return;
+                }
+                $.ajax({
+                    url: "/Transaction/BulkSettlement",
+                    type: "POST",
+                    datatype: "json",
+                    data: { "Transactions": rData, "SettleStatus" : settleStatus },
+                    success: function (response) {
+                        if (response.success) {
+                            table.destroy();
+                            table = getDatatable();
+                            toastr.success(response.message, 'Success');
+                        } else {
+                            toastr.error(response.message, 'Failed');
+                        }
+                    }
+                });
+            });
+        });
+
+        function getDatatable () {
+            return $("#dtTable").DataTable({
+                "processing": true, 
+                "serverSide": true, 
+                "filter": true, 
+                "orderMulti": false, 
+                "ajax": {
+                    "url": "/Transaction/TransactionList",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                    {
+                        className: 'dt-body-center',
+                        render: function (data, type, full, meta) {
+                            return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+                        }, "orderable": false, "searchable": false, "targets": 0, "width": 50
+                    },
+                    { "data": "merchantName", "name": "MerchantName", "autoWidth": true },
+                    { "data": "terminalName", "name": "TerminalName", "autoWidth": true },
+                    { "data": "currencyName", "name": "CurrencyName", "autoWidth": true },
+                    { "data": "glNumber", "name": "GLNumber", "autoWidth": true },
+                    {
+                        data: "endStamp",
+                        render: function (d) {
+                            return moment(d).format("YYYY-MM-DD hh:mm a");
+                        }, "name": "EndStamp", "autoWidth": true
+                    },
+                    { "data": "principalAmount", "name": "PrincipalAmount", "autoWidth": true },
+                    { "data": "comissionAmount", "name": "ComissionAmount", "autoWidth": true },
+                    { "data": "vatAmount", "name": "VatAmount", "autoWidth": true },
+                    {
+                        "render": function (data, type, full, meta) {
+                            return '<a href="/Transaction/Details/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Details"><span class="blue"><i class="ace-icon fa fa-list bigger-110"></i></span ></a> <a href="/Transaction/Settle/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Settle/Reject"><span class="green"><i class="ace-icon fa fa-check bigger-120"></i></span ></a>'
+                        }, "orderable": false
+                    }
+                ]
+            });
+        }
+
+    </script>
+}

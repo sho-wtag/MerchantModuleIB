@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MerchantPortal", "MerchantPortal\MerchantPortal.csproj", "{B868F4B5-7411-47E3-8EAF-5FCFAADDAE69}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MerchantPortal.BusinessServices", "MerchantPortal.BusinessServices\MerchantPortal.BusinessServices.csproj", "{588DD19C-A3A6-445B-8751-A9EA1F3149C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MerchantPortal.Data", "MerchantPortal.Data\MerchantPortal.Data.csproj", "{4B587AC2-BA3F-4B7E-A0AA-57B468D94933}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantPortal.WebApi", "MerchantPortal.WebApi\MerchantPortal.WebApi.csproj", "{9175CE42-15FD-41E2-9A36-C39240822FF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantPortal.Tests", "MerchantPortal.Tests\MerchantPortal.Tests.csproj", "{818085F2-05E8-406C-831D-E26FC5305F0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B868F4B5-7411-47E3-8EAF-5FCFAADDAE69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B868F4B5-7411-47E3-8EAF-5FCFAADDAE69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B868F4B5-7411-47E3-8EAF-5FCFAADDAE69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B868F4B5-7411-47E3-8EAF-5FCFAADDAE69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{588DD19C-A3A6-445B-8751-A9EA1F3149C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{588DD19C-A3A6-445B-8751-A9EA1F3149C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{588DD19C-A3A6-445B-8751-A9EA1F3149C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{588DD19C-A3A6-445B-8751-A9EA1F3149C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B587AC2-BA3F-4B7E-A0AA-57B468D94933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B587AC2-BA3F-4B7E-A0AA-57B468D94933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B587AC2-BA3F-4B7E-A0AA-57B468D94933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B587AC2-BA3F-4B7E-A0AA-57B468D94933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9175CE42-15FD-41E2-9A36-C39240822FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9175CE42-15FD-41E2-9A36-C39240822FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9175CE42-15FD-41E2-9A36-C39240822FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9175CE42-15FD-41E2-9A36-C39240822FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{818085F2-05E8-406C-831D-E26FC5305F0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{818085F2-05E8-406C-831D-E26FC5305F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{818085F2-05E8-406C-831D-E26FC5305F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{818085F2-05E8-406C-831D-E26FC5305F0C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D8BCBB1-8E14-4F9E-99CF-EFD3B6E3BE30}
+	EndGlobalSection
+EndGlobal

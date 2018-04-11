@@ -1,0 +1,47 @@
+﻿@model MerchantPortal.Data.Models.AccountViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "UserActive";
+}
+<h2>UserActive</h2>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Email)
+        </dd>
+    </dl>
+
+    <form asp-action="UserActive">
+        <input type="hidden" asp-for="ApplicationUser.Id" />
+        @if (Model.ApplicationUser.IsActive == false)
+        {
+            <input type="submit" value="Active" class="btn btn-success" />
+        }
+        else
+        {
+            <input type="submit" value="Block" class="btn btn-danger" />
+        }|
+        <a asp-action="UserList">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,132 @@
+﻿@model MerchantPortal.Data.Models.ApprovalViewModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Approval Details</h2>
+<div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Merchant.MerchantName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Merchant.MerchantName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Merchant.BizOrgName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Merchant.BizOrgName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Merchant.BizOwnerName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Merchant.BizOwnerName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Merchant.BizContactAddess)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Merchant.BizContactAddess)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Terminal.OrgName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Terminal.OrgName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Terminal.OwnerName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Terminal.OwnerName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Terminal.ContactAddess)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Terminal.ContactAddess)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                
+                <dt>
+                    @Html.DisplayNameFor(model => model.MctCommissionSetup.TrnxnType)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MctCommissionSetup.TrnxnType)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MctCommissionSetup.CurrencyId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MctCommissionSetup.CurrencyName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MctCommissionSetup.IsContinuousType)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MctCommissionSetup.IsContinuousType)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MctCommissionSetup.IsPercentage)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MctCommissionSetup.IsPercentage)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MctCommissionSetup.CommissionAmount)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MctCommissionSetup.CommissionAmount)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MctCommissionSetup.BankPercentage)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MctCommissionSetup.BankPercentage)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MctCommissionSetup.MinAmount)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MctCommissionSetup.MinAmount)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MctCommissionSetup.IsRoundUpAmount)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MctCommissionSetup.IsRoundUpAmount)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MctCommissionSetup.IsRoundDownAmount)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MctCommissionSetup.IsRoundDownAmount)
+                </dd>
+                
+            </dl>
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    <a asp-action="ApproverList">Back to List</a>
+</div>

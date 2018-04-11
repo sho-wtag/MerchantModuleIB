@@ -1,0 +1,107 @@
+﻿@model MerchantPortal.Models.TransactionViewModel
+@{
+    ViewData["Title"] = "TransactionList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="header smaller lighter blue">Merchant Transaction</h3>
+        <div class="table-header">
+            Transaction List
+        </div>
+        <table id="dtTable" class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TransactionRefId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MerchantName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TerminalName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CurrencyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GLNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EndStamp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrincipalAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ComissionAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VatAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatusName)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dtTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+
+                "ajax": {
+                    "url": "/Transaction/GetData",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                    {
+                        "data": "transactionRefId",
+                        "render": function (data, type, full, meta) {
+                            return '<a href="/Transaction/TransactionDetail/' + full.id + '" >' + full.transactionRefId + '</a>'
+                        }, "name": "TransactionRefId", "autoWidth": true
+                    },
+                    //{ "data": "transactionRefId", "name": "TransactionRefId", "autoWidth": true },
+                    {
+                        "data": "merchantName",
+                        "render": function (data, type, full, meta) {
+                            return '<a href="/Merchant/Details/' + full.merchantId + '" >' + full.merchantName + '</a>'
+                        }, "name": "MerchantName", "autoWidth": true
+                    },
+                    {
+                        "data": "terminalName",
+                        "render": function (data, type, full, meta) {
+                            return '<a href="/Terminal/Details/' + full.terminalId + '" >' + full.terminalName + '</a>'
+                        }, "name": "TerminalName", "autoWidth": true
+                    },
+                    
+                    { "data": "currencyName", "name": "CurrencyName", "autoWidth": true },
+                    { "data": "glNumber", "name": "GLNumber", "autoWidth": true },
+                    {
+                        data: "endStamp",
+                        render: function (d) {
+                            return moment(d).format("YYYY-MM-DD hh:mm a");
+                        }, "name": "EndStamp", "autoWidth": true
+                    },
+                    { "data": "principalAmount", "name": "PrincipalAmount", "autoWidth": true },
+                    { "data": "comissionAmount", "name": "ComissionAmount", "autoWidth": true },
+                    { "data": "vatAmount", "name": "VatAmount", "autoWidth": true },
+                    { "data": "statusName", "name": "StatusName", "autoWidth": true },
+                    {
+                        "render": function (data, type, full, meta) {
+                            return '<a href="/Transaction/TransactionDetail/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Details"><span class="blue"><i class="ace-icon fa fa-list bigger-110"></i></span ></a>'
+                        }, "orderable": false
+                    }
+                ]
+            });
+        });
+    </script>
+}

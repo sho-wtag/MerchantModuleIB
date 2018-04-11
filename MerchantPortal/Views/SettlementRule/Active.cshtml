@@ -1,0 +1,145 @@
+﻿@model MerchantPortal.Data.Models.SettlementRule
+@{
+    ViewData["Title"] = "Active";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-info">
+    @*@if (Model.IsActive == false)
+        {
+            <div class="panel-heading"><b>Active Settlement Rule</b></div>
+        }
+        else
+        {
+            <div class="panel-heading"><b>Block Settlement Rule</b></div>
+        }*@
+    <div class="panel-heading"><b>Active/Block Settlement Rule</b></div>
+    <div class="panel-body">
+        <div class="row">
+            @if (Model.IsActive == false)
+            {
+                <h5>Are you sure you want to active this?</h5>
+            }
+            else
+            {
+                <h5>Are you sure you want to block this?</h5>
+            }
+            <div class="col-md-5">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MerchantName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.MerchantName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TerminalName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.TerminalName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SettlementRuleId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.SettlementRuleId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Frequency)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Frequency)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CommissionEnable)
+                    </dt>
+                    <dd>
+                        @if (Model.CommissionEnable == true)
+                        {
+                            <div class="label label-sm label-success">YES</div>
+                        }
+                        else
+                        {
+                            <div class="label label-sm label-warning">NO</div>
+                        }
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Commission)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Commission)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-7">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.VATEnable)
+                    </dt>
+                    <dd>
+                        @if (Model.VATEnable == true)
+                        {
+                            <div class="label label-sm label-success">YES</div>
+                        }
+                        else
+                        {
+                            <div class="label label-sm label-warning">NO</div>
+                        }
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.VATPercentage)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.VATPercentage)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </dt>
+                    <dd>
+                        @if (Model.IsActive == true)
+                        {
+                            <div class="label label-sm label-success">Active</div>
+                        }
+                        else
+                        {
+                            <div class="label label-sm label-warning">Blocked</div>
+                        }
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsApprove)
+                    </dt>
+                    <dd>
+                        @if (Model.IsApprove == true)
+                        {
+                            <div class="label label-sm label-success">Approved</div>
+                        }
+                        else
+                        {
+                            <div class="label label-sm label-warning">Not Approved</div>
+                        }
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <form asp-action="ActiveDeactiveConfirm">
+        <input type="hidden" asp-for="Id" />
+        <div class="panel-footer">
+            @if (Model.IsActive == false)
+            {
+                <input type="submit" value="Active" class="btn btn-success" />
+            }
+            else
+            {
+                <input type="submit" value="Block" class="btn btn-danger" />
+            }|
+            <a asp-action="RuleList">Back to List</a>
+        </div>
+    </form>
+</div>

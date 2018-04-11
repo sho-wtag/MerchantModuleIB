@@ -1,0 +1,87 @@
+﻿@model IEnumerable<MerchantPortal.Data.Models.ApprovalViewModel>
+
+@{
+    ViewData["Title"] = "ApproverList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+
+        <div class="table-header">
+            Approval List
+        </div>
+
+        <!-- div.table-responsive -->
+        <!-- div.dataTables_borderWrap -->
+        <div>
+            <table id="dtTable" class="table table-striped table-bordered table-hover">
+
+                <thead>
+                    <tr>
+                        <th>
+                            Merchant Name
+                        </th>
+                        <th>Terminal Name</th>
+                        <th>CommisionAmt</th>
+                        <th>BankPercentage</th>
+                        <th>GLNumber</th>
+                        <th>AccountNo</th>
+                        <th>VATRegNo</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dtTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+
+                "ajax": {
+                    "url": "/Approval/GetData",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "merchantName", "name": "MerchantName", "autoWidth": true },
+                    { "data": "orgName", "name": "OrgName", "autoWidth": true },
+                    { "data": "commissionAmount", "name": "CommissionAmount", "autoWidth": true },
+                    { "data": "bankPercentage", "name": "BankPercentage", "autoWidth": true },
+                    { "data": "glNumber", "name": "GLNumber", "autoWidth": true },
+                    { "data": "accountNo", "name": "AccountNo", "autoWidth": true },
+                    { "data": "vatRegNo", "name": "VATRegNo", "autoWidth": true },
+                    {
+                        "render": function (data, type, full, meta) {
+                            if (full.isApprove == false) {
+                                return '<span class="label label-sm label-danger">UnApproved</span>'
+                            } else {
+                                return '<span class="label label-sm label-success">Approved</span>'
+                            }
+                        }
+                    },
+                    {
+                        "render": function (data, type, full, meta) {
+                            if (full.isApprove == false) {
+                                return '<a href="/Approval/Approve/' + full.id2 + ' " class="tooltip-success" data-rel="tooltip" title="Approve"><span class="green"><i class="ace-icon fa fa-toggle-on bigger-120"></i></span ></a> <a href="/Approval/Details/' + full.id2 + '" class="tooltip-success" data-rel="tooltip" title="Details"><span class="blue"><i class="ace-icon fa fa-list bigger-110"></i></span ></a>'
+                            } else {
+                                return '<a href="/Approval/Approve/' + full.id2 + ' " class="tooltip-success" data-rel="tooltip" title="Approve"><span class="green"><i class="ace-icon fa fa-toggle-on bigger-120"></i></span ></a> <a href="/Approval/Details/' + full.id2 + '" class="tooltip-success" data-rel="tooltip" title="Details"><span class="blue"><i class="ace-icon fa fa-list bigger-110"></i></span ></a>'
+                            }
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+}

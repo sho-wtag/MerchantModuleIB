@@ -1,0 +1,135 @@
+﻿@model MerchantPortal.Models.TransactionViewModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-info">
+    <div class="panel-heading"><b>Transaction Details</b></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TransactionRefId)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.TransactionRefId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MerchantName)
+                    </dt>
+                    <dd>
+                        <a href="@Url.Action("Details", "Merchant", new { id = Model.MerchantId })">
+                            <span>@Html.DisplayFor(model => model.MerchantName)</span>
+                        </a>
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TerminalName)
+                    </dt>
+                    <dd>
+                        <a href="@Url.Action("Details", "Terminal", new { id = Model.TerminalId })">
+                            <span>@Html.DisplayFor(model => model.TerminalName)</span>
+                        </a>
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CurrencyName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CurrencyName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CustBankName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CustBankName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StatusName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.StatusName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GLNumber)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GLNumber)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StartStamp)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.StartStamp)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EndStamp)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.EndStamp)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PrincipalAmount)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.PrincipalAmount)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ComissionAmount)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ComissionAmount)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.VatAmount)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.VatAmount)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SettledDate)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.SettledDate)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RefundDate)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.RefundDate)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TTUMDownloadDate)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.TTUMDownloadDate)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.VisitorIP)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.VisitorIP)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.VisitorBrowserInfo)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.VisitorBrowserInfo)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EntryDate)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.EntryDate)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <a asp-action="/">Back to List</a>
+    </div>
+</div>

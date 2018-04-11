@@ -1,0 +1,68 @@
+﻿@model MerchantPortal.Data.Models.MctGLSetup
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MctGLSetup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MerchantID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MerchantName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TerminalId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TerminalName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GLNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GLNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AccountNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AccountName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptions)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptions)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsApprove)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsApprove)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.ID }) |
+    <a asp-action="Index">Back to List</a>
+</div>

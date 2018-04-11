@@ -1,0 +1,80 @@
+﻿@model MerchantPortal.Data.Models.MctVATSetup
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MctVATSetup</h4>
+    <hr />
+    <dl class="dl-horizontal">        
+        <dt>
+            @Html.DisplayNameFor(model => model.VATID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VATID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MerchantID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MerchantName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TerminalId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TerminalName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptions)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptions)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CountryName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.VATRegNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VATRegNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsContinuousType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsContinuousType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Percentage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Percentage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsApprove)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsApprove)
+        </dd>
+       
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.ID  }) |
+    <a asp-action="Index">Back to List</a>
+</div>

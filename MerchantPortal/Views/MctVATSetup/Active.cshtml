@@ -1,0 +1,121 @@
+﻿@model MerchantPortal.Data.Models.MctVATSetup
+@{
+    ViewData["Title"] = "Active";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.IsActive == false)
+{
+    <h2>Active</h2>
+}
+else
+{
+    <h2>Block</h2>
+}
+
+<div>
+    <h4>VAT Setup</h4>
+    @if (Model.IsActive == false)
+    {
+        <h3>Are you sure you want to active this?</h3>
+    }
+    else
+    {
+        <h3>Are you sure you want to block this?</h3>
+    }
+    <hr />
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.VATID)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.VATID)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MerchantID)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MerchantName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TerminalId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TerminalName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Descriptions)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Descriptions)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CountryID)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CountryName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.VATRegNo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.VATRegNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsContinuousType)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsContinuousType)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Percentage)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Percentage)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+                <dd>
+                    @if (Model.IsActive == true)
+                    {
+                        <div class="label label-sm label-success">Active</div>
+                    }
+                    else
+                    {
+                        <div class="label label-sm label-warning">Inactive</div>
+                    }
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsApprove)
+                </dt>
+                <dd>
+                    @if (Model.IsApprove == true)
+                    {
+                        <div class="label label-sm label-success">Approved</div>
+                    }
+                    else
+                    {
+                        <div class="label label-sm label-warning">Not Approved</div>
+                    }
+                </dd>
+            </dl>
+        </div>
+
+    </div>
+</div>
+<div>
+    <form asp-action="ActiveDeactiveConfirm">
+        <input type="hidden" asp-for="ID" />
+        @if (Model.IsActive == false)
+        {
+            <input type="submit" value="Active" class="btn btn-success" />
+        }
+        else
+        {
+            <input type="submit" value="Block" class="btn btn-danger" />
+        }|
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

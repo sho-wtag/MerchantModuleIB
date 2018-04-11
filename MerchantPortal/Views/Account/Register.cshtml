@@ -1,0 +1,77 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+    <div class="panel panel-info">
+        <div class="panel-heading"><b>User Create</b></div>
+        <div class="panel-body">
+            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label asp-for="ApplicationUser.FirstName" class="control-label col-md-2"></label>
+                    <div class="col-md-5">
+                        <input asp-for="ApplicationUser.FirstName" class="form-control" />
+                        <span asp-validation-for="ApplicationUser.FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ApplicationUser.LastName" class="control-label col-md-2"></label>
+                    <div class="col-md-5">
+                        <input asp-for="ApplicationUser.LastName" class="form-control" />
+                        <span asp-validation-for="ApplicationUser.LastName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ApplicationUser.UserName" class="control-label col-md-2"></label>
+                    <div class="col-md-5">
+                        <input asp-for="ApplicationUser.UserName" class="form-control" />
+                        <span asp-validation-for="ApplicationUser.UserName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ApplicationRole.Name" class="control-label col-md-2"></label>
+                    <div class="col-md-5">
+                        @*<input asp-for="UserRole" class="form-control" />
+                            <span asp-validation-for="UserRole" class="text-danger"></span>*@
+
+                        @Html.DropDownListFor(model => model.ApplicationRole.Name, new SelectList(Model.ApplicationRoles), " -- Select Role -- ", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                        @Html.ValidationMessageFor(model => model.ApplicationRole.Name, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ApplicationUser.Email" class="control-label col-md-2"></label>
+                    <div class="col-md-5">
+                        <input asp-for="ApplicationUser.Email" class="form-control" />
+                        <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label col-md-2"></label>
+                    <div class="col-md-5">
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label col-md-2"></label>
+                    <div class="col-md-5">
+                        <input asp-for="ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

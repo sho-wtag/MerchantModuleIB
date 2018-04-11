@@ -1,0 +1,26 @@
+﻿body {
+    font-family: sans-serif;
+}
+
+.btn {
+    border-radius: 3px;
+}
+
+.dropdown-menu > li {
+    font-size: 13px;
+    padding-left: 11px;
+    padding-right: 11px;
+    padding-bottom: 4px;
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+
+.user-menu > li {
+    padding: 4px 12px;
+}
+
+.user-menu > li {
+    clear: both;
+    font-weight: 400;
+    color: #333!important;
+}

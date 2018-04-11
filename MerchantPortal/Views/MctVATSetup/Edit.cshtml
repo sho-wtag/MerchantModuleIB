@@ -1,0 +1,102 @@
+﻿@model MerchantPortal.Models.MctVATSetupViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+<h4>MctVATSetup</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @Html.HiddenFor(model => model.MctVATSetup.ID)
+            @Html.HiddenFor(model => model.MctVATSetup.MerchantID)
+            @Html.HiddenFor(model => model.MctVATSetup.TerminalId)
+
+
+            <!--Merchant-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctVATSetup.MerchantID, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.MctVATSetup.MerchantID, new SelectList(Model.Merchants, "Id", "MerchantName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                    @Html.ValidationMessageFor(model => model.MctVATSetup.MerchantID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!--Terminal-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctVATSetup.TerminalId, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.MctVATSetup.TerminalId, new SelectList(Model.Terminals, "Id", "OrgName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                    @Html.ValidationMessageFor(model => model.MctVATSetup.TerminalId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!--Description-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctVATSetup.Descriptions, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.MctVATSetup.Descriptions, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MctVATSetup.Descriptions, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!--Country-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctVATSetup.CountryID, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">                   
+                    @Html.DropDownListFor(model => model.MctVATSetup.CountryID, new SelectList(Model.Countries, "Id", "StrCountryName"), "-- Please select --",  htmlAttributes: new { @class = "form-control", @id = "Region" })                   
+                    @Html.ValidationMessageFor(model => model.MctVATSetup.CountryID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <!--VATRegNo-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctVATSetup.VATRegNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.MctVATSetup.VATRegNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MctVATSetup.VATRegNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!--Continuous type-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctVATSetup.IsContinuousType, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.CheckBoxFor(model => model.MctVATSetup.IsContinuousType, new { @checked = "checked" })
+                    @Html.ValidationMessageFor(model => model.MctVATSetup.IsContinuousType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <!--Percentage-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctVATSetup.Percentage, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.MctVATSetup.Percentage, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MctVATSetup.Percentage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <!--Is Active-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctVATSetup.IsActive, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.CheckBoxFor(model => model.MctVATSetup.IsActive, new { @checked = "checked" })
+                    @Html.ValidationMessageFor(model => model.MctVATSetup.IsActive, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

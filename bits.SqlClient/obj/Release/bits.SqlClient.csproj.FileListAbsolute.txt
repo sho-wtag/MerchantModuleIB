@@ -1,0 +1,5 @@
+F:\SourceSafeProjects\RemitErp\bits.SqlClient\bin\Release\bits.SqlClient.dll
+F:\SourceSafeProjects\RemitErp\bits.SqlClient\bin\Release\bits.SqlClient.pdb
+F:\SourceSafeProjects\RemitErp\bits.SqlClient\obj\Release\bits.SqlClient.dll
+F:\SourceSafeProjects\RemitErp\bits.SqlClient\obj\Release\bits.SqlClient.pdb
+F:\SourceSafeProjects\RemitERP\bits.SqlClient\obj\Release\bits.SqlClient.csprojResolveAssemblyReference.cache

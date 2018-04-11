@@ -1,0 +1,196 @@
+﻿@model MerchantPortal.Models.SettlementRuleViewModel
+@{
+    ViewData["Title"] = "Settlement Rule Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Raw(Model.MessageText)
+<form asp-action="SettlementRuleCreate" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="panel panel-info">
+        <div class="panel-heading"><b>Settlement Rule</b></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="MerchantId" class="control-label col-md-4"></label>
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.MerchantId, new SelectList(Model.Merchants, "Id", "MerchantName"), " -- Select Merchant -- ", htmlAttributes: new { @class = "form-control", @id = "MerchantId" })
+                                @Html.ValidationMessageFor(model => model.MerchantId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="TerminalId" class="control-label col-md-4"></label>
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.TerminalId, new SelectList(Model.Terminals, "Id", "OrgName"), " -- Select Terminal -- ", htmlAttributes: new { @class = "form-control", @id = "TerminalId" })
+                                @Html.ValidationMessageFor(model => model.TerminalId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="Description" class="control-label col-md-4"></label>
+                            <div class="col-md-8">
+                                <input asp-for="Description" class="form-control" />
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="SettlementType" class="control-label col-md-4"></label>
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.SettlementType, new List<SelectListItem>
+                                                    {
+                                                    new SelectListItem() {Text = "Manual", Value = "Manual", Selected = true },
+                                                    new SelectListItem() {Text = "Auto", Value = "Auto"}
+                                                    }, new { @class = "form-control" })
+                                <span asp-validation-for="SettlementType" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="Frequency" class="control-label col-md-4"></label>
+                            <div class="col-md-8">
+                                <input asp-for="Frequency" class="form-control" />
+                                <span asp-validation-for="Frequency" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.CommissionEnable, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.CheckBoxFor(model => model.CommissionEnable, new { @checked = "checked", @onclick = "manageCommission(this)" })
+                                @Html.ValidationMessageFor(model => model.CommissionEnable, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="Commission">
+                        <div class="row">
+                            <label asp-for="Commission" class="control-label col-md-4"></label>
+                            <div class="col-md-8">
+                                <input asp-for="Commission" class="form-control" />
+                                <span asp-validation-for="Commission" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.VATEnable, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.CheckBoxFor(model => model.VATEnable, new { @checked = "checked", @onclick = "manageVAT(this)" })
+                                @Html.ValidationMessageFor(model => model.VATEnable, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row" id="VATPercentage">
+                            <label asp-for="VATPercentage" class="control-label col-md-4"></label>
+                            <div class="col-md-8">
+                                <input asp-for="VATPercentage" class="form-control" />
+                                <span asp-validation-for="VATPercentage" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Create</button> |
+            <a asp-action="RuleList">Back to List</a>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#CommissionEnable").prop("checked", false);
+            $("#VATEnable").prop("checked", false);
+            $('#Commission').hide();
+            $('#VATPercentage').hide();
+        });
+        function manageCommission(data) {
+            var checked = $(data).is(':checked');
+            if (checked) {
+                var merchant = $('#MerchantId').val();
+                if (merchant == null || merchant == undefined || merchant == '') {
+                    toastr.error('Please select merchant', 'Error');
+                    $("#CommissionEnable").prop("checked", false);
+                    return;
+                }
+                var terminal = $('#TerminalId').val();
+                if (terminal == null || terminal == undefined || terminal == '') {
+                    toastr.error('Please select terminal', 'Error');
+                    $("#CommissionEnable").prop("checked", false);
+                    return;
+                }
+                $('#Commission').show();
+                $.ajax({
+                    url: "/SettlementRule/GetTerminalCommissionInfo",
+                    type: "POST",
+                    datatype: "json",
+                    data: { "MerchantId": merchant, "TerminalId": terminal },
+                    success: function (response) {
+                        if (response.data != null && response.data != '') {
+                            var comm = response.data.commission;
+                            var textbox = document.getElementsByName('Commission')[0];
+                            textbox.value = comm;
+                        } else {
+                            var textbox = document.getElementsByName('Commission')[0];
+                            textbox.value = '';
+                        }
+                    }
+                });
+            } else {
+                var textbox = document.getElementsByName('Commission')[0];
+                textbox.value = '';
+                $('#Commission').hide();
+            }
+        }
+        function manageVAT(data) {
+            var checked = $(data).is(':checked');
+            if (checked) {
+                var merchant = $('#MerchantId').val();
+                if (merchant == null || merchant == undefined || merchant == '') {
+                    toastr.error('Please select merchant', 'Error');
+                    $("#VATEnable").prop("checked", false);
+                    return;
+                }
+                var terminal = $('#TerminalId').val();
+                if (terminal == null || terminal == undefined || terminal == '') {
+                    toastr.error('Please select terminal', 'Error');
+                    $("#VATEnable").prop("checked", false);
+                    return;
+                }
+                $.ajax({
+                    url: "/SettlementRule/GetTerminalVATInfo",
+                    type: "POST",
+                    datatype: "json",
+                    data: { "MerchantId": merchant, "TerminalId": terminal },
+                    success: function (response) {
+                        if (response.data != null && response.data != '') {
+                            var vat = response.data.vatPercentage;
+                            var textbox = document.getElementsByName('VATPercentage')[0];
+                            textbox.value = vat;
+                        } else {
+                            var textbox = document.getElementsByName('VATPercentage')[0];
+                            textbox.value = '';
+                        }
+                    }
+                });
+                $('#VATPercentage').show();
+            } else {
+                var textbox = document.getElementsByName('VATPercentage')[0];
+                textbox.value = '';
+                $('#VATPercentage').hide();
+            }
+        }
+    </script>
+}

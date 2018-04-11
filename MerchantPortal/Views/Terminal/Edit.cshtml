@@ -1,0 +1,179 @@
+﻿@model MerchantPortal.Models.TerminalViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+<h4>Terminal</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="EditTerminal">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="MerchantName" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.MerchantId, new SelectList(Model.Merchants, "Id", "MerchantName"), " -- Select Merchant -- ", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                                @Html.ValidationMessageFor(model => model.MerchantId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="OrgName" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="OrgName" class="form-control" />
+                                <span asp-validation-for="OrgName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="OwnerName" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="OwnerName" class="form-control" />
+                                <span asp-validation-for="OwnerName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="ContactAddess" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="ContactAddess" class="form-control" />
+                                <span asp-validation-for="ContactAddess" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="PhoneNo" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="PhoneNo" class="form-control" />
+                                <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="FaxNo" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="FaxNo" class="form-control" />
+                                <span asp-validation-for="FaxNo" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="EmailId" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="EmailId" class="form-control" />
+                                <span asp-validation-for="EmailId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="ContactPerson" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="ContactPerson" class="form-control" />
+                                <span asp-validation-for="ContactPerson" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="ContactPersonPhone" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="ContactPersonPhone" class="form-control" />
+                                <span asp-validation-for="ContactPersonPhone" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="ContactPersonAddress" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="ContactPersonAddress" class="form-control" />
+                                <span asp-validation-for="ContactPersonAddress" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="ContactPersonEmailId" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="ContactPersonEmailId" class="form-control" />
+                                <span asp-validation-for="ContactPersonEmailId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="TradeLicenseNo" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="TradeLicenseNo" class="form-control" />
+                                <span asp-validation-for="TradeLicenseNo" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="VATRegistrationNo" class="control-label"></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="VATRegistrationNo" class="form-control" />
+                                <span asp-validation-for="VATRegistrationNo" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" asp-for="IsActive" />
+            <input type="hidden" asp-for="IsApprove" />
+            <input type="hidden" asp-for="EntryBy" />
+            <input type="hidden" asp-for="EntryDate" />
+            <input type="hidden" asp-for="IsDeleted" />
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="Update" class="btn btn-default" /> |
+                        <a asp-action="TerminalList">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

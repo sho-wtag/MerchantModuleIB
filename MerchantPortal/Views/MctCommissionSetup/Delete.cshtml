@@ -1,0 +1,149 @@
+﻿@model MerchantPortal.Data.Models.MctCommissionSetup
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MctCommissionSetup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.MerchantId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MerchantName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TerminalId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TerminalName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CountryName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TrnxnType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TrnxnType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrencyId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CurrencyName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsContinuousType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsContinuousType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPercentage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsPercentage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CommissionAmount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CommissionAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BankPercentage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BankPercentage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MinAmount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MinAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsRoundUpAmount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsRoundUpAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsRoundDownAmount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsRoundDownAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsApprove)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsApprove)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntryBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntryDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedDate)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteConfirmed">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

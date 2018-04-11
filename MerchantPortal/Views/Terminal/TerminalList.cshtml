@@ -1,0 +1,89 @@
+﻿@model IEnumerable<MerchantPortal.Data.Models.Terminal>
+@{
+    ViewData["Title"] = "TerminalList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    <a href="/Merchant">Create New</a>
+</p>
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="header smaller lighter blue">Terminal List</h3>
+        <div class="table-header">
+            Terminal List
+        </div>
+        <table id="dtTable" class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MerchantName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrgName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OwnerName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ContactAddess)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmailId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dtTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+
+                "ajax": {
+                    "url": "/Terminal/GetData",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "merchantName", "name": "MerchantName", "autoWidth": true },
+                    { "data": "orgName", "name": "OrgName", "autoWidth": true },
+                    { "data": "ownerName", "name": "OwnerName", "autoWidth": true },
+                    { "data": "contactAddess", "name": "ContactAddess", "autoWidth": true },
+                    { "data": "phoneNo", "name": "PhoneNo", "autoWidth": true },
+                    { "data": "emailId", "name": "EmailId", "autoWidth": true },
+                    {
+                        "render": function (data, type, full, meta) {
+                            if (full.isActive == false) {
+                                return '<span class="label label-sm label-danger">Blocked</span>'
+                            } else {
+                                return '<span class="label label-sm label-success">Active</span>'
+                            }
+                        }, "orderable": false
+                    },
+                    {
+                        "render": function (data, type, full, meta) {
+                            if (full.isActive == false) {
+                                return '<a href="/Terminal/Edit/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Edit"><span class="green"><i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span ></a> <a href="/Terminal/Delete/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Delete"><span class="red"><i class="ace-icon fa fa-trash-o bigger-120"></i></span ></a> <a href="/Terminal/Details/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Details"><span class="blue"><i class="ace-icon fa fa-list bigger-110"></i></span ></a> <a href="/Terminal/Active/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Active"><span class="green"><i class="ace-icon fa fa-toggle-on bigger-120"></i></span ></a>'
+                            } else {
+                                return '<a href="/Terminal/Edit/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Edit"><span class="green"><i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span ></a> <a href="/Terminal/Delete/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Delete"><span class="red"><i class="ace-icon fa fa-trash-o bigger-120"></i></span ></a> <a href="/Terminal/Details/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Details"><span class="blue"><i class="ace-icon fa fa-list bigger-110"></i></span ></a> <a href="/Terminal/Active/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Block"><span class="red"><i class="ace-icon fa fa-toggle-off bigger-120"></i></span ></a>'
+                            }
+                        }, "orderable": false
+                    }
+                ]
+            });
+        });
+    </script>
+}
+

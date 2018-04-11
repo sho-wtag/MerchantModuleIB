@@ -1,0 +1,31 @@
+﻿@model MerchantPortal.Models.ApplicationRoleViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Raw(Model.MessageText)
+<form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+    <div class="panel panel-info">
+        <div class="panel-heading"><b>Role Create</b></div>
+        <div class="panel-body">
+            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label col-md-2"></label>
+                    <div class="col-md-5">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

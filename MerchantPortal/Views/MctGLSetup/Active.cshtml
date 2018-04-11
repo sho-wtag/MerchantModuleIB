@@ -1,0 +1,109 @@
+﻿@model MerchantPortal.Data.Models.MctGLSetup
+@{
+    ViewData["Title"] = "Active";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.IsActive == false)
+{
+    <h2>Active</h2>
+}
+else
+{
+    <h2>Block</h2>
+}
+
+<div>
+    <h4>GL Setup</h4>
+    @if (Model.IsActive == false)
+    {
+        <h3>Are you sure you want to active this?</h3>
+    }
+    else
+    {
+        <h3>Are you sure you want to block this?</h3>
+    }
+    <hr />
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.MerchantID)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MerchantName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TerminalId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TerminalName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.GLNumber)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.GLNumber)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountNo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AccountNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AccountName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Descriptions)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Descriptions)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+                <dd>
+                    @if (Model.IsActive == true)
+                    {
+                        <div class="label label-sm label-success">Active</div>
+                    }
+                    else
+                    {
+                        <div class="label label-sm label-warning">Inactive</div>
+                    }
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsApprove)
+                </dt>
+                <dd>
+                    @if (Model.IsApprove == true)
+                    {
+                        <div class="label label-sm label-success">Approved</div>
+                    }
+                    else
+                    {
+                        <div class="label label-sm label-warning">Not Approved</div>
+                    }
+                </dd>
+            </dl>
+        </div>
+
+    </div>
+</div>
+<div>
+    <form asp-action="ActiveDeactiveConfirm">
+        <input type="hidden" asp-for="ID" />
+        @if (Model.IsActive == false)
+        {
+            <input type="submit" value="Active" class="btn btn-success" />
+        }
+        else
+        {
+            <input type="submit" value="Block" class="btn btn-danger" />
+        }|
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,92 @@
+﻿@model MerchantPortal.Models.SettlementRuleViewModel
+@{
+    ViewData["Title"] = "RuleList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    <a href="/SettlementRule/SettlementRuleCreate">Create New</a>
+</p>
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="header smaller lighter blue">Settlement Rule List</h3>
+        <div class="table-header">
+            Settlement Rule List
+        </div>
+        <table id="dtTable" class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MerchantName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TerminalName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SettlementRuleId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SettlementType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Frequency)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Commission)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VATPercentage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dtTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+
+                "ajax": {
+                    "url": "/SettlementRule/GetData",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "merchantName", "name": "MerchantName", "autoWidth": true },
+                    { "data": "terminalName", "name": "TerminalName", "autoWidth": true },
+                    { "data": "settlementRuleId", "name": "SettlementRuleId", "autoWidth": true },
+                    { "data": "settlementType", "name": "SettlementType", "autoWidth": true },
+                    { "data": "frequency", "name": "Frequency", "autoWidth": true },
+                    { "data": "commission", "name": "Commission", "autoWidth": true },
+                    { "data": "vatPercentage", "name": "VATPercentage", "autoWidth": true },
+                    {
+                        "render": function (data, type, full, meta) {
+                            if (full.isActive == false) {
+                                return '<span class="label label-sm label-danger">Blocked</span>'
+                            } else {
+                                return '<span class="label label-sm label-success">Active</span>'
+                            }
+                        }, "orderable": false
+                    },
+                    {
+                        "render": function (data, type, full, meta) {
+                            if (full.isActive == false) {
+                                return '<a href="/SettlementRule/Edit/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Edit"><span class="green"><i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span ></a> <a href="/SettlementRule/Delete/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Delete"><span class="red"><i class="ace-icon fa fa-trash-o bigger-120"></i></span ></a> <a href="/SettlementRule/Details/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Details"><span class="blue"><i class="ace-icon fa fa-list bigger-110"></i></span ></a> <a href="/SettlementRule/Active/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Active"><span class="green"><i class="ace-icon fa fa-toggle-on bigger-120"></i></span ></a>'
+                            } else {
+                                return '<a href="/SettlementRule/Edit/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Edit"><span class="green"><i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span ></a> <a href="/SettlementRule/Delete/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Delete"><span class="red"><i class="ace-icon fa fa-trash-o bigger-120"></i></span ></a> <a href="/SettlementRule/Details/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Details"><span class="blue"><i class="ace-icon fa fa-list bigger-110"></i></span ></a> <a href="/SettlementRule/Active/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Block"><span class="red"><i class="ace-icon fa fa-toggle-off bigger-120"></i></span ></a>'
+                            }
+                        }, "orderable": false
+                    }
+                ]
+            });
+        });
+    </script>
+}

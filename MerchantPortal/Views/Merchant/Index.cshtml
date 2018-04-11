@@ -1,0 +1,712 @@
+﻿@model MerchantPortal.Models.MerchantViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="widget-box">
+    <div class="widget-header widget-header-blue widget-header-flat">
+        <h4 class="widget-title lighter">Merchant Information</h4>
+    </div>
+
+    <div class="widget-body">
+        <div class="widget-main">
+            <div id="fuelux-wizard-container">
+                <div>
+                    <ul class="steps">
+                        <li data-step="1" class="active">
+                            <span class="step">1</span>
+                            <span class="title">Merchant</span>
+                        </li>
+
+                        <li data-step="2">
+                            <span class="step">2</span>
+                            <span class="title">Terminal</span>
+                        </li>
+
+                        <li data-step="3">
+                            <span class="step">3</span>
+                            <span class="title">Commission</span>
+                        </li>
+
+                        <li data-step="4">
+                            <span class="step">4</span>
+                            <span class="title">VAT</span>
+                        </li>
+                        <li data-step="5">
+                            <span class="step">5</span>
+                            <span class="title">GL Setup</span>
+                        </li>
+                        <li data-step="6">
+                            <span class="step">6</span>
+                            <span class="title">Settlement & Refund</span>
+                        </li>
+                        <li data-step="7">
+                            <span class="step">7</span>
+                            <span class="title">Approval</span>
+                        </li>
+                    </ul>
+                </div>
+                <hr />
+                <div class="step-content pos-rel">
+                    <div class="step-pane active" data-step="1">
+                        @using (Html.BeginForm("MerchantCreate", "Merchant", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary(true)
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.MerchantName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.MerchantName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.MerchantName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.BizOrgName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.BizOrgName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.BizOrgName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.BizOwnerName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.BizOwnerName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.BizOwnerName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.BizContactAddess, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.BizContactAddess, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.BizContactAddess, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.HeadOfcAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.HeadOfcAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.HeadOfcAddress, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.BizPhone, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.BizPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.BizPhone, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.BizFax, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.BizFax, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.BizEmail, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.BizEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.BizEmail, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.BizContactPersonBcp, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.BizContactPersonBcp, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.BizContactPersonBcp, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.BcpPhone, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.BcpPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.BcpPhone, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.BcpAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.BcpAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.BcpAddress, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.BcpEmail, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.BcpEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.BcpEmail, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.TechContactPrsonTcp, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.TechContactPrsonTcp, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.TechContactPrsonTcp, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.TcpPhone, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.TcpPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.TcpPhone, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.TcpAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.TcpAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.TcpEmail, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.TcpEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.TcpEmail, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.TradeLicenseNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.TradeLicenseNo, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.TradeLicenseNo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Merchant.VATRegistrationNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Merchant.VATRegistrationNo, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Merchant.VATRegistrationNo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-6 pull-right">
+                                            <input type="submit" value="Create" class="btn btn-success" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="step-pane" data-step="2">
+                        @using (Html.BeginForm("TerminalCreate", "Terminal", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary(true)
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.MerchantId, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.DropDownListFor(model => model.Terminal.MerchantId, new SelectList(Model.Merchants, "Id", "MerchantName"), " -- Select Merchant -- ", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                                                @Html.ValidationMessageFor(model => model.Terminal.MerchantId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.OrgName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.OrgName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.OrgName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.OwnerName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.OwnerName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.OwnerName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.ContactAddess, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.ContactAddess, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.ContactAddess, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.PhoneNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.PhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.PhoneNo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.FaxNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.FaxNo, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.FaxNo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.EmailId, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.EmailId, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.EmailId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.ContactPerson, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.ContactPerson, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.ContactPerson, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.ContactPersonPhone, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.ContactPersonPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.ContactPersonPhone, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.ContactPersonAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.ContactPersonAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.ContactPersonAddress, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.ContactPersonEmailId, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.ContactPersonEmailId, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.ContactPersonEmailId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.TradeLicenseNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.TradeLicenseNo, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.TradeLicenseNo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Terminal.VATRegistrationNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-8">
+                                                @Html.EditorFor(model => model.Terminal.VATRegistrationNo, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Terminal.VATRegistrationNo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6 pull-right">
+                                        <input type="submit" value="Create" class="btn btn-success" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <!--Merchant terminal wise commission setup-->
+                    <div class="step-pane active" data-step="3">
+                        @using (Html.BeginForm("Create", "MctCommissionSetup", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary(true)
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!--Merchant-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.MerchantId, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.DropDownListFor(model => model.MctCommissionSetup.MerchantId, new SelectList(Model.Merchants, "Id", "MerchantName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.MerchantId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Terminal-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.TerminalId, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.DropDownListFor(model => model.MctCommissionSetup.TerminalId, new SelectList(Model.Terminals, "Id", "OrgName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.TerminalId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Description-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.Description, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.EditorFor(model => model.MctCommissionSetup.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.Description, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Country-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.CountryId, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.DropDownListFor(model => model.MctCommissionSetup.CountryId, new SelectList(Model.Countries, "Id", "StrCountryName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.CountryId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Product-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.ProductId, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.DropDownList("ProductList", "---Select product---")
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.ProductId, "-- Please select --", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Currency-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.CurrencyId, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.DropDownListFor(model => model.MctCommissionSetup.CurrencyId, new SelectList(Model.Currencies, "Id", "Name"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.CurrencyId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Continuous type-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.IsContinuousType, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.CheckBoxFor(model => model.MctCommissionSetup.IsContinuousType, new { @checked = "checked" })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.IsContinuousType, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!--Transaction type-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.TrnxnType, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.EditorFor(model => model.MctCommissionSetup.TrnxnType, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.TrnxnType, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Calculation type-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.IsPercentage, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.RadioButtonFor(model => model.MctCommissionSetup.IsPercentage, "Percentage", true)@Html.Label("Percentage")
+                                                @Html.RadioButtonFor(model => model.MctCommissionSetup.IsPercentage, "Flat amount", false)@Html.Label("Flat amount")
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.IsPercentage, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--commission Amount-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.CommissionAmount, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.EditorFor(model => model.MctCommissionSetup.CommissionAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.CommissionAmount, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Minimum amount-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.MinAmount, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.EditorFor(model => model.MctCommissionSetup.MinAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.MinAmount, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Bank percentage-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.BankPercentage, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.EditorFor(model => model.MctCommissionSetup.BankPercentage, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.BankPercentage, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Round up amount-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.IsRoundUpAmount, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.CheckBoxFor(model => model.MctCommissionSetup.IsRoundUpAmount, new { @checked = "checked" })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.IsRoundUpAmount, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Round down amount-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.IsRoundDownAmount, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.CheckBoxFor(model => model.MctCommissionSetup.IsRoundDownAmount, new { @checked = "checked" })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.IsRoundDownAmount, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <!--Is Active-->
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MctCommissionSetup.IsActive, htmlAttributes: new { @class = "control-label col-md-4" })
+                                            <div class="col-md-6">
+                                                @Html.CheckBoxFor(model => model.MctCommissionSetup.IsActive, new { @checked = "checked" })
+                                                @Html.ValidationMessageFor(model => model.MctCommissionSetup.IsActive, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>                                                               
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-6">
+                                        <input type="submit" value="Create" class="btn btn-success" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <!--Merchant terminal wise VAT setup-->
+                    <div class="step-pane" data-step="4">
+                        @using (Html.BeginForm("Create", "MctVATSetup", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary(true)
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <!--Merchant-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctVATSetup.MerchantID, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.MctVATSetup.MerchantID, new SelectList(Model.Merchants, "Id", "MerchantName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                                        @Html.ValidationMessageFor(model => model.MctVATSetup.MerchantID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <!--Terminal-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctVATSetup.TerminalId, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.MctVATSetup.TerminalId, new SelectList(Model.Terminals, "Id", "OrgName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                                        @Html.ValidationMessageFor(model => model.MctVATSetup.TerminalId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <!--Description-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctVATSetup.Descriptions, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.MctVATSetup.Descriptions, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MctVATSetup.Descriptions, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <!--Country-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctVATSetup.CountryID, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.MctVATSetup.CountryID, new SelectList(Model.Countries, "Id", "StrCountryName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                                        @Html.ValidationMessageFor(model => model.MctVATSetup.CountryID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <!--VATRegNo-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctVATSetup.VATRegNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.MctVATSetup.VATRegNo, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MctVATSetup.VATRegNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <!--Continuous type-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctVATSetup.IsContinuousType, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.CheckBoxFor(model => model.MctVATSetup.IsContinuousType, new { @checked = "checked" })
+                                        @Html.ValidationMessageFor(model => model.MctVATSetup.IsContinuousType, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <!--Percentage-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctVATSetup.Percentage, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.MctVATSetup.Percentage, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MctVATSetup.Percentage, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <!--Is Active-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctVATSetup.IsActive, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.CheckBoxFor(model => model.MctVATSetup.IsActive, new { @checked = "checked" })
+                                        @Html.ValidationMessageFor(model => model.MctVATSetup.IsActive, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-6">
+                                        <input type="submit" value="Create" class="btn btn-success" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <!--Merchant terminal wise GL setup-->
+                    <div class="step-pane" data-step="5">
+                        @using (Html.BeginForm("Create", "MctGLSetup", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary(true)
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <!--Merchant-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctGLSetup.MerchantID, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.MctGLSetup.MerchantID, new SelectList(Model.Merchants, "Id", "MerchantName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                                        @Html.ValidationMessageFor(model => model.MctGLSetup.MerchantID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <!--Terminal-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctGLSetup.TerminalId, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.MctGLSetup.TerminalId, new SelectList(Model.Terminals, "Id", "OrgName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                                        @Html.ValidationMessageFor(model => model.MctGLSetup.TerminalId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <!--GL Number-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctGLSetup.GLNumber, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.MctGLSetup.GLNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MctGLSetup.GLNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <!--AccountNo-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctGLSetup.AccountNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.MctGLSetup.AccountNo, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MctGLSetup.AccountNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <!--AccountName-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctGLSetup.AccountName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.MctGLSetup.AccountName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MctGLSetup.AccountName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <!--Description-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctGLSetup.Descriptions, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.MctGLSetup.Descriptions, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MctGLSetup.Descriptions, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <!--Is Active-->
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MctGLSetup.IsActive, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6">
+                                        @Html.CheckBoxFor(model => model.MctGLSetup.IsActive, new { @checked = "checked" })
+                                        @Html.ValidationMessageFor(model => model.MctGLSetup.IsActive, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-6">
+                                        <input type="submit" value="Create" class="btn btn-success" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+            <div class="wizard-actions">
+                <button class="btn btn-prev">
+                    <i class="ace-icon fa fa-arrow-left"></i>
+                    Prev
+                </button>
+
+                <button class="btn btn-success btn-next" data-last="Finish">
+                    Next
+                    <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                </button>
+            </div>
+        </div><!-- /.widget-main -->
+    </div><!-- /.widget-body -->
+</div>
+@section Scripts {
+    <script src="~/bundles/jqueryval"></script>
+    <script src="~/js/wizard.min.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        $('#skip-validation').removeAttr('checked').on('click', function () {
+            $validation = this.checked;
+            if (this.checked) {
+                $('#sample-form').hide();
+                $('#validation-form').removeClass('hide');
+            }
+            else {
+                $('#validation-form').addClass('hide');
+                $('#sample-form').show();
+            }
+        })
+        var $validation = false;
+        $('#fuelux-wizard-container')
+            .ace_wizard({
+                //step: 2 //optional argument. wizard will jump to step "2" at first
+                //buttons: '.wizard-actions:eq(0)'
+            })
+            .on('actionclicked.fu.wizard', function (e, info) {
+                if (info.step == 1 && $validation) {
+                    if (!$('#validation-form').valid()) e.preventDefault();
+                }
+            })
+            //.on('changed.fu.wizard', function() {
+            //})
+            .on('finished.fu.wizard', function (e) {
+                bootbox.dialog({
+                    message: "Thank you! Your information was successfully saved!",
+                    buttons: {
+                        "success": {
+                            "label": "OK",
+                            "className": "btn-sm btn-primary"
+                        }
+                    }
+                });
+            }).on('stepclick.fu.wizard', function (e) {
+                //e.preventDefault();//this will prevent clicking and selecting steps
+            })
+    </script>
+}

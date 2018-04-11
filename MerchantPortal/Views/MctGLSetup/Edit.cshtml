@@ -1,0 +1,97 @@
+﻿@model MerchantPortal.Models.MctGLSetupViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>MctGLSetup</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @Html.HiddenFor(model => model.MctGLSetup.ID)
+            @Html.HiddenFor(model => model.MctGLSetup.MerchantID)
+            @Html.HiddenFor(model => model.MctGLSetup.TerminalId)
+
+
+            <!--Merchant-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctGLSetup.MerchantID, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.MctGLSetup.MerchantID, new SelectList(Model.Merchants, "Id", "MerchantName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                    @Html.ValidationMessageFor(model => model.MctGLSetup.MerchantID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!--Terminal-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctGLSetup.TerminalId, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.MctGLSetup.TerminalId, new SelectList(Model.Terminals, "Id", "OrgName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                    @Html.ValidationMessageFor(model => model.MctGLSetup.TerminalId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!--GL Number-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctGLSetup.GLNumber, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.MctGLSetup.GLNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MctGLSetup.GLNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <!--AccountNo-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctGLSetup.AccountNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.MctGLSetup.AccountNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MctGLSetup.AccountNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!--AccountName-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctGLSetup.AccountName, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.MctGLSetup.AccountName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MctGLSetup.AccountName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!--Description-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctGLSetup.Descriptions, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.MctGLSetup.Descriptions, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MctGLSetup.Descriptions, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!--Is Active-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.MctGLSetup.IsActive, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    @Html.CheckBoxFor(model => model.MctGLSetup.IsActive, new { @checked = "checked" })
+                    @Html.ValidationMessageFor(model => model.MctGLSetup.IsActive, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

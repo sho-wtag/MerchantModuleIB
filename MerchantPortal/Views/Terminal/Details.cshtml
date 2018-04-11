@@ -1,0 +1,128 @@
+﻿@model MerchantPortal.Models.TerminalViewModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Details</h2>
+<div>
+    <h4>Terminal</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.MerchantName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MerchantName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrgName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OrgName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.OwnerName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OwnerName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactAddess)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ContactAddess)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneNo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FaxNo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FaxNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.EmailId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EmailId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactPerson)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ContactPerson)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-7">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactPersonPhone)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ContactPersonPhone)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactPersonAddress)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ContactPersonAddress)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactPersonEmailId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ContactPersonEmailId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TradeLicenseNo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TradeLicenseNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.VATRegistrationNo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.VATRegistrationNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+                <dd>
+                    @if (Model.IsActive == true)
+                    {
+                        <div class="label label-sm label-success">Active</div>
+                    }
+                    else
+                    {
+                        <div class="label label-sm label-warning">Blocked</div>
+                    }
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsApprove)
+                </dt>
+                <dd>
+                    @if (Model.IsApprove == true)
+                    {
+                        <div class="label label-sm label-success">Approved</div>
+                    }
+                    else
+                    {
+                        <div class="label label-sm label-warning">Not Approved</div>
+                    }
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    <a asp-action="TerminalList">Back to List</a>
+</div>

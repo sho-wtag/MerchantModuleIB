@@ -1,0 +1,160 @@
+﻿@model MerchantPortal.Data.Models.Merchant
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Delete</h2>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Merchant</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.MerchantName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MerchantName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BizOrgName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BizOrgName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BizOwnerName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BizOwnerName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BizContactAddess)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BizContactAddess)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.HeadOfcAddress)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.HeadOfcAddress)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BizPhone)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BizPhone)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BizFax)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BizFax)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BizEmail)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BizEmail)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BizContactPersonBcp)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BizContactPersonBcp)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BcpPhone)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BcpPhone)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-7">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.BcpAddress)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BcpAddress)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BcpEmail)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BcpEmail)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TechContactPrsonTcp)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TechContactPrsonTcp)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TcpPhone)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TcpPhone)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TcpAddress)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TcpAddress)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TcpEmail)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TcpEmail)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TradeLicenseNo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TradeLicenseNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.VATRegistrationNo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.VATRegistrationNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+                <dd>
+                    @if (Model.IsActive == true)
+                    {
+                        <div class="label label-sm label-success">Active</div>
+                    }
+                    else
+                    {
+                        <div class="label label-sm label-warning">Inactive</div>
+                    }
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsApprove)
+                </dt>
+                <dd>
+                    @if (Model.IsApprove == true)
+                    {
+                        <div class="label label-sm label-success">Approved</div>
+                    }
+                    else
+                    {
+                        <div class="label label-sm label-warning">Not Approved</div>
+                    }
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <form asp-action="DeleteConfirm">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="MerchantList">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,96 @@
+﻿@model IEnumerable<MerchantPortal.Data.Models.Country>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumCountryCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StrCountryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StrRemarks)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ISOCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BlackListed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StrISOAlpha3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumISO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Active)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.UpdatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdateDate)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.IsDeleted)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumCountryCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrCountryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrRemarks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISOCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlackListed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrISOAlpha3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumISO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateDate)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

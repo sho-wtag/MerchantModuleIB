@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\AppSettings.cs" />
+    <Compile Remove="Models\ChargeConfig.cs" />
+    <Compile Remove="Models\City.cs" />
+    <Compile Remove="Models\District.cs" />
+    <Compile Remove="Models\Division.cs" />
+    <Compile Remove="Models\ExchangeHouse.cs" />
+    <Compile Remove="Models\FileMapping.cs" />
+    <Compile Remove="Models\LookType.cs" />
+    <Compile Remove="Models\Lookup.cs" />
+    <Compile Remove="Models\MailAndMessage.cs" />
+    <Compile Remove="Models\Membership.cs" />
+    <Compile Remove="Models\MembershipCommission.cs" />
+    <Compile Remove="Models\PaymentMode.cs" />
+    <Compile Remove="Models\SubAgent.cs" />
+    <Compile Remove="Models\TestKey.cs" />
+    <Compile Remove="Models\TimeZone.cs" />
+    <Compile Remove="Repositories\AppSettingsRepository.cs" />
+    <Compile Remove="Repositories\ChargeConfigRepository.cs" />
+    <Compile Remove="Repositories\CityRepository.cs" />
+    <Compile Remove="Repositories\DistrictRepository.cs" />
+    <Compile Remove="Repositories\DivisionRepository.cs" />
+    <Compile Remove="Repositories\ExchangeHouseRepository.cs" />
+    <Compile Remove="Repositories\LookTypeRepository.cs" />
+    <Compile Remove="Repositories\LookupRepository.cs" />
+    <Compile Remove="Repositories\MailAndMessageRepository.cs" />
+    <Compile Remove="Repositories\MembershipCommissionRepository.cs" />
+    <Compile Remove="Repositories\MembershipRepository.cs" />
+    <Compile Remove="Repositories\PaymentModeRepository.cs" />
+    <Compile Remove="Repositories\SubAgentRepository.cs" />
+    <Compile Remove="Repositories\TestKeyRepository.cs" />
+    <Compile Remove="Repositories\TimeZoneRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>System</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

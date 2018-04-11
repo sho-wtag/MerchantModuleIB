@@ -1,0 +1,85 @@
+﻿@model MerchantPortal.Data.Models.Country
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Country</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumCountryCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumCountryCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StrCountryName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StrCountryName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StrRemarks)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StrRemarks)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ISOCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ISOCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BlackListed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BlackListed)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StrISOAlpha3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StrISOAlpha3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumISO)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumISO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.UpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdateDate)
+        </dd>*@
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

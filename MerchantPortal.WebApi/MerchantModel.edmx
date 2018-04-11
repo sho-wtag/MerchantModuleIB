@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MerchantIBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mct_trnxn_id" Type="varchar" MaxLength="255" />
+          <Property Name="mct_trnxn_Amount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="currency_id" Type="smallint" />
+          <Property Name="success_url" Type="varchar" MaxLength="255" />
+          <Property Name="failure_url" Type="varchar" MaxLength="255" />
+          <Property Name="cancel_url" Type="varchar" MaxLength="255" />
+          <Property Name="customer_bank_acid" Type="bigint" />
+          <Property Name="start_tstamp" Type="datetime" />
+          <Property Name="end_tstamp" Type="datetime" />
+          <Property Name="trnxn_status_id" Type="smallint" />
+          <Property Name="mct_user_id" Type="bigint" />
+          <Property Name="customer_user_id" Type="bigint" />
+          <Property Name="gl_id" Type="bigint" />
+          <Property Name="principle_amount" Type="float" />
+          <Property Name="commission_amount" Type="float" />
+          <Property Name="vat_amount" Type="float" />
+          <Property Name="BankRefID" Type="int" />
+          <Property Name="MerVar1" Type="varchar" MaxLength="100" />
+          <Property Name="MerVar2" Type="varchar" MaxLength="100" />
+          <Property Name="MerVar3" Type="varchar" MaxLength="100" />
+          <Property Name="MerVar4" Type="varchar" MaxLength="100" />
+          <Property Name="MerVar5" Type="varchar" MaxLength="100" />
+          <Property Name="MerVar6" Type="varchar" MaxLength="100" />
+          <Property Name="MerVar7" Type="varchar" MaxLength="100" />
+          <Property Name="MerVar8" Type="varchar" MaxLength="100" />
+          <Property Name="mct_ref_id" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Function Name="PROC_REQ_FROM_MERCHANT_SELL_TRANS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Merchant_ID" Type="varchar" Mode="In" />
+          <Parameter Name="Terminal_ID" Type="varchar" Mode="In" />
+          <Parameter Name="Currency_Code" Type="varchar" Mode="In" />
+          <Parameter Name="mct_trnxn_id" Type="varchar" Mode="In" />
+          <Parameter Name="Language_Code" Type="varchar" Mode="In" />
+          <Parameter Name="mct_ref_id" Type="varchar" Mode="In" />
+          <Parameter Name="MerVar1" Type="varchar" Mode="In" />
+          <Parameter Name="MerVar2" Type="varchar" Mode="In" />
+          <Parameter Name="MerVar3" Type="varchar" Mode="In" />
+          <Parameter Name="MerVar4" Type="varchar" Mode="In" />
+          <Parameter Name="MerVar5" Type="varchar" Mode="In" />
+          <Parameter Name="MerVar6" Type="varchar" Mode="In" />
+          <Parameter Name="MerVar7" Type="varchar" Mode="In" />
+          <Parameter Name="MerVar8" Type="varchar" Mode="In" />
+          <Parameter Name="Product_Type" Type="varchar" Mode="In" />
+          <Parameter Name="Return_URL" Type="varchar" Mode="In" />
+          <Parameter Name="mct_trnxn_Amount" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PROC_REQ_FROM_MERCHANT_SELL_TRANS_VERIFY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="Merchant_ID" Type="varchar" Mode="In" />
+          <Parameter Name="mct_ref_id" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="MerchantIBModelStoreContainer">
+          <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MerchantIBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MerchantIBEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Transactions" EntityType="MerchantIBModel.Transaction" />
+          <FunctionImport Name="Get_Sell_Transaction" EntitySet="Transactions" ReturnType="Collection(MerchantIBModel.Transaction)">
+            <Parameter Name="Merchant_ID" Mode="In" Type="String" />
+            <Parameter Name="Terminal_ID" Mode="In" Type="String" />
+            <Parameter Name="Currency_Code" Mode="In" Type="String" />
+            <Parameter Name="mct_trnxn_id" Mode="In" Type="String" />
+            <Parameter Name="Language_Code" Mode="In" Type="String" />
+            <Parameter Name="mct_ref_id" Mode="In" Type="String" />
+            <Parameter Name="MerVar1" Mode="In" Type="String" />
+            <Parameter Name="MerVar2" Mode="In" Type="String" />
+            <Parameter Name="MerVar3" Mode="In" Type="String" />
+            <Parameter Name="MerVar4" Mode="In" Type="String" />
+            <Parameter Name="MerVar5" Mode="In" Type="String" />
+            <Parameter Name="MerVar6" Mode="In" Type="String" />
+            <Parameter Name="MerVar7" Mode="In" Type="String" />
+            <Parameter Name="MerVar8" Mode="In" Type="String" />
+            <Parameter Name="Product_Type" Mode="In" Type="String" />
+            <Parameter Name="Return_URL" Mode="In" Type="String" />
+            <Parameter Name="mct_trnxn_Amount" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Verify_Sell_Transaction" ReturnType="Collection(MerchantIBModel.PROC_REQ_FROM_MERCHANT_SELL_TRANS_VERIFY_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="Merchant_ID" Mode="In" Type="String" />
+            <Parameter Name="mct_ref_id" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mct_trnxn_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mct_trnxn_Amount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="currency_id" Type="Int16" />
+          <Property Name="success_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="failure_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cancel_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="customer_bank_acid" Type="Int64" />
+          <Property Name="start_tstamp" Type="DateTime" Precision="3" />
+          <Property Name="end_tstamp" Type="DateTime" Precision="3" />
+          <Property Name="trnxn_status_id" Type="Int16" />
+          <Property Name="mct_user_id" Type="Int64" />
+          <Property Name="customer_user_id" Type="Int64" />
+          <Property Name="gl_id" Type="Int64" />
+          <Property Name="principle_amount" Type="Double" />
+          <Property Name="commission_amount" Type="Double" />
+          <Property Name="vat_amount" Type="Double" />
+          <Property Name="BankRefID" Type="Int32" />
+          <Property Name="MerVar1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MerVar2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MerVar3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MerVar4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MerVar5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MerVar6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MerVar7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MerVar8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mct_ref_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="PROC_REQ_FROM_MERCHANT_SELL_TRANS_VERIFY_Result">
+          <Property Type="String" Name="Action" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="BankRefId" Nullable="true" />
+          <Property Type="String" Name="CurrencyCode" Nullable="true" />
+          <Property Type="Int16" Name="CurrencyID" Nullable="true" />
+          <Property Type="String" Name="MerTransactionID" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MerRefID" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="TxnAmount" Nullable="true" />
+          <Property Type="String" Name="TxnStatus" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="ServerTime" Nullable="false" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MerchantIBModelStoreContainer" CdmEntityContainer="MerchantIBEntities" >
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="MerchantIBModel.Transaction">
+              <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="mct_ref_id" ColumnName="mct_ref_id" />
+                <ScalarProperty Name="MerVar8" ColumnName="MerVar8" />
+                <ScalarProperty Name="MerVar7" ColumnName="MerVar7" />
+                <ScalarProperty Name="MerVar6" ColumnName="MerVar6" />
+                <ScalarProperty Name="MerVar5" ColumnName="MerVar5" />
+                <ScalarProperty Name="MerVar4" ColumnName="MerVar4" />
+                <ScalarProperty Name="MerVar3" ColumnName="MerVar3" />
+                <ScalarProperty Name="MerVar2" ColumnName="MerVar2" />
+                <ScalarProperty Name="MerVar1" ColumnName="MerVar1" />
+                <ScalarProperty Name="BankRefID" ColumnName="BankRefID" />
+                <ScalarProperty Name="vat_amount" ColumnName="vat_amount" />
+                <ScalarProperty Name="commission_amount" ColumnName="commission_amount" />
+                <ScalarProperty Name="principle_amount" ColumnName="principle_amount" />
+                <ScalarProperty Name="gl_id" ColumnName="gl_id" />
+                <ScalarProperty Name="customer_user_id" ColumnName="customer_user_id" />
+                <ScalarProperty Name="mct_user_id" ColumnName="mct_user_id" />
+                <ScalarProperty Name="trnxn_status_id" ColumnName="trnxn_status_id" />
+                <ScalarProperty Name="end_tstamp" ColumnName="end_tstamp" />
+                <ScalarProperty Name="start_tstamp" ColumnName="start_tstamp" />
+                <ScalarProperty Name="customer_bank_acid" ColumnName="customer_bank_acid" />
+                <ScalarProperty Name="cancel_url" ColumnName="cancel_url" />
+                <ScalarProperty Name="failure_url" ColumnName="failure_url" />
+                <ScalarProperty Name="success_url" ColumnName="success_url" />
+                <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+                <ScalarProperty Name="mct_trnxn_Amount" ColumnName="mct_trnxn_Amount" />
+                <ScalarProperty Name="mct_trnxn_id" ColumnName="mct_trnxn_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Get_Sell_Transaction" FunctionName="MerchantIBModel.Store.PROC_REQ_FROM_MERCHANT_SELL_TRANS" />
+          <FunctionImportMapping FunctionImportName="Verify_Sell_Transaction" FunctionName="MerchantIBModel.Store.PROC_REQ_FROM_MERCHANT_SELL_TRANS_VERIFY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MerchantIBModel.PROC_REQ_FROM_MERCHANT_SELL_TRANS_VERIFY_Result">
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="BankRefId" ColumnName="BankRefId" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+                <ScalarProperty Name="MerTransactionID" ColumnName="MerTransactionID" />
+                <ScalarProperty Name="MerRefID" ColumnName="MerRefID" />
+                <ScalarProperty Name="TxnAmount" ColumnName="TxnAmount" />
+                <ScalarProperty Name="TxnStatus" ColumnName="TxnStatus" />
+                <ScalarProperty Name="ServerTime" ColumnName="ServerTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

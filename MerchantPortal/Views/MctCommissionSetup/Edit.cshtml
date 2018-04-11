@@ -1,0 +1,179 @@
+﻿@model MerchantPortal.Models.MctCommissionSetupViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+<h4>MctCommissionSetup</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @Html.HiddenFor(model => model.MctCommissionSetup.Id)
+            @Html.HiddenFor(model => model.MctCommissionSetup.MerchantId)
+            @Html.HiddenFor(model => model.MctCommissionSetup.TerminalId)
+
+            <div class="row">
+                <div class="col-md-6">
+                    <!--Merchant-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.MerchantId, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(model => model.MctCommissionSetup.MerchantId, new SelectList(Model.Merchants, "Id", "MerchantName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.MerchantId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--Terminal-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.TerminalId, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(model => model.MctCommissionSetup.TerminalId, new SelectList(Model.Terminals, "Id", "OrgName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.TerminalId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--Description-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.Description, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.MctCommissionSetup.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--Country-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.CountryId, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(model => model.MctCommissionSetup.CountryId, new SelectList(Model.Countries, "Id", "StrCountryName"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.CountryId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--Product-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.ProductId, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.DropDownList("ProductList", "---Select product---")
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.ProductId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--Currency-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.CurrencyId, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(model => model.MctCommissionSetup.CurrencyId, new SelectList(Model.Currencies, "Id", "Name"), "-- Please select --", htmlAttributes: new { @class = "form-control", @id = "Region" })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.CurrencyId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--Continuous type-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.IsContinuousType, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.CheckBoxFor(model => model.MctCommissionSetup.IsContinuousType, new { @checked = "checked" })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.IsContinuousType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <!--Transaction type-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.TrnxnType, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.MctCommissionSetup.TrnxnType, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.TrnxnType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--Calculation type-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.IsPercentage, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.RadioButtonFor(model => model.MctCommissionSetup.IsPercentage, "Percentage", true)@Html.Label("Percentage")
+                            @Html.RadioButtonFor(model => model.MctCommissionSetup.IsPercentage, "Flat amount", false)@Html.Label("Flat amount")
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.IsPercentage, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--commission Amount-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.CommissionAmount, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.MctCommissionSetup.CommissionAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.CommissionAmount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--Minimum amount-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.MinAmount, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.MctCommissionSetup.MinAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.MinAmount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--Bank percentage-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.BankPercentage, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.MctCommissionSetup.BankPercentage, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.BankPercentage, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <!--Round up amount-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.IsRoundUpAmount, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.CheckBoxFor(model => model.MctCommissionSetup.IsRoundUpAmount, new { @checked = "checked" })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.IsRoundUpAmount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--Round down amount-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.IsRoundDownAmount, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.CheckBoxFor(model => model.MctCommissionSetup.IsRoundDownAmount, new { @checked = "checked" })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.IsRoundDownAmount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--Is Active-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MctCommissionSetup.IsActive, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.CheckBoxFor(model => model.MctCommissionSetup.IsActive, new { @checked = "checked" })
+                            @Html.ValidationMessageFor(model => model.MctCommissionSetup.IsActive, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

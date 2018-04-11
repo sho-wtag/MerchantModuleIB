@@ -1,0 +1,16 @@
+F:\SourceSafeProjects\RemitErp\bits.SqlClient\bin\Debug\bits.SqlClient.dll
+F:\SourceSafeProjects\RemitErp\bits.SqlClient\bin\Debug\bits.SqlClient.pdb
+F:\SourceSafeProjects\RemitErp\bits.SqlClient\obj\Debug\bits.SqlClient.dll
+F:\SourceSafeProjects\RemitErp\bits.SqlClient\obj\Debug\bits.SqlClient.pdb
+F:\SourceSafeProjects\RemitERP\bits.SqlClient\obj\Debug\bits.SqlClient.csprojResolveAssemblyReference.cache
+E:\SourceSafeProjects\RemitERP\bits.SqlClient\bin\Debug\bits.SqlClient.dll
+E:\SourceSafeProjects\RemitERP\bits.SqlClient\bin\Debug\bits.SqlClient.pdb
+E:\SourceSafeProjects\RemitERP\bits.SqlClient\obj\Debug\bits.SqlClient.dll
+E:\SourceSafeProjects\RemitERP\bits.SqlClient\obj\Debug\bits.SqlClient.pdb
+E:\SourceSafeProjects\RemitERP\bits.SqlClient\obj\Debug\bits.SqlClient.csprojResolveAssemblyReference.cache
+D:\SourceSafeProjects\RemitERP\bits.SqlClient\bin\Debug\bits.SqlClient.dll
+D:\SourceSafeProjects\RemitERP\bits.SqlClient\bin\Debug\bits.SqlClient.pdb
+D:\SourceSafeProjects\RemitERP\bits.SqlClient\obj\Debug\bits.SqlClient.dll
+D:\SourceSafeProjects\RemitERP\bits.SqlClient\obj\Debug\bits.SqlClient.pdb
+D:\SourceSafeProjects\RemitERP\bits.SqlClient\obj\Debug\bits.SqlClient.csprojResolveAssemblyReference.cache
+E:\SourceSafeProjects\RemitERP\bits.SqlClient\obj\Debug\bits.SqlClient.csproj.CoreCompileInputs.cache

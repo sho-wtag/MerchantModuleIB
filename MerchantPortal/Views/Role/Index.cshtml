@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MerchantPortal.Data.Models.ApplicationRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-header">
+            Role List
+        </div>
+        <table id="dtTable" class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsDeleted)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dtTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+
+                "ajax": {
+                    "url": "/Role/GetRole",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "name", "name": "Name", "autoWidth": true },
+                    { "data": "isActive", "name": "IsActive", "autoWidth": true },
+                    { "data": "isDeleted", "name": "IsDeleted", "autoWidth": true },
+                    {
+                        "render": function (data, type, full, meta) {
+                            if (full.isActive == false) {
+                                return '<a href="/Role/Edit/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Edit"><span class="green"><i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span ></a> <a href="/Role/Delete/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Delete"><span class="red"><i class="ace-icon fa fa-trash-o bigger-120"></i></span ></a>  <a href="/Role/Active/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Active"><span class="green"><i class="ace-icon fa fa-toggle-on bigger-120"></i></span ></a>'
+                            } else {
+                                return '<a href="/Role/Edit/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Edit"><span class="green"><i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span ></a> <a href="/Role/Delete/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Delete"><span class="red"><i class="ace-icon fa fa-trash-o bigger-120"></i></span ></a> <a href="/Role/Active/' + full.id + '" class="tooltip-success" data-rel="tooltip" title="Block"><span class="red"><i class="ace-icon fa fa-toggle-off bigger-120"></i></span ></a>'
+                            }
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+}

@@ -1,0 +1,139 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+  <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-Mtofly-D78FC683-49B0-4EBD-9937-C45B9D812BFE</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE;RELEASE;NETCOREAPP2_0</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Agents\**" />
+    <Compile Remove="Views\AppSettings\**" />
+    <Compile Remove="Views\Branches\**" />
+    <Compile Remove="Views\Cities\**" />
+    <Compile Remove="Views\DistrictSVs\**" />
+    <Compile Remove="Views\Districts\**" />
+    <Compile Remove="Views\Division\**" />
+    <Compile Remove="Views\ExchangeHouses\**" />
+    <Compile Remove="Views\LookType\**" />
+    <Compile Remove="Views\Lookup\**" />
+    <Compile Remove="Views\MailAndMessage\**" />
+    <Compile Remove="Views\MembershipCommissions\**" />
+    <Compile Remove="Views\Memberships\**" />
+    <Compile Remove="Views\PaymentModes\**" />
+    <Content Remove="Views\Agents\**" />
+    <Content Remove="Views\AppSettings\**" />
+    <Content Remove="Views\Branches\**" />
+    <Content Remove="Views\Cities\**" />
+    <Content Remove="Views\DistrictSVs\**" />
+    <Content Remove="Views\Districts\**" />
+    <Content Remove="Views\Division\**" />
+    <Content Remove="Views\ExchangeHouses\**" />
+    <Content Remove="Views\LookType\**" />
+    <Content Remove="Views\Lookup\**" />
+    <Content Remove="Views\MailAndMessage\**" />
+    <Content Remove="Views\MembershipCommissions\**" />
+    <Content Remove="Views\Memberships\**" />
+    <Content Remove="Views\PaymentModes\**" />
+    <EmbeddedResource Remove="Views\Agents\**" />
+    <EmbeddedResource Remove="Views\AppSettings\**" />
+    <EmbeddedResource Remove="Views\Branches\**" />
+    <EmbeddedResource Remove="Views\Cities\**" />
+    <EmbeddedResource Remove="Views\DistrictSVs\**" />
+    <EmbeddedResource Remove="Views\Districts\**" />
+    <EmbeddedResource Remove="Views\Division\**" />
+    <EmbeddedResource Remove="Views\ExchangeHouses\**" />
+    <EmbeddedResource Remove="Views\LookType\**" />
+    <EmbeddedResource Remove="Views\Lookup\**" />
+    <EmbeddedResource Remove="Views\MailAndMessage\**" />
+    <EmbeddedResource Remove="Views\MembershipCommissions\**" />
+    <EmbeddedResource Remove="Views\Memberships\**" />
+    <EmbeddedResource Remove="Views\PaymentModes\**" />
+    <None Remove="Views\Agents\**" />
+    <None Remove="Views\AppSettings\**" />
+    <None Remove="Views\Branches\**" />
+    <None Remove="Views\Cities\**" />
+    <None Remove="Views\DistrictSVs\**" />
+    <None Remove="Views\Districts\**" />
+    <None Remove="Views\Division\**" />
+    <None Remove="Views\ExchangeHouses\**" />
+    <None Remove="Views\LookType\**" />
+    <None Remove="Views\Lookup\**" />
+    <None Remove="Views\MailAndMessage\**" />
+    <None Remove="Views\MembershipCommissions\**" />
+    <None Remove="Views\Memberships\**" />
+    <None Remove="Views\PaymentModes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\AgentsController.cs" />
+    <Compile Remove="Controllers\AppSettingsController.cs" />
+    <Compile Remove="Controllers\BranchController.cs" />
+    <Compile Remove="Controllers\BranchesController.cs" />
+    <Compile Remove="Controllers\CitiesController.cs" />
+    <Compile Remove="Controllers\CurrenciesController.cs" />
+    <Compile Remove="Controllers\DistrictsController.cs" />
+    <Compile Remove="Controllers\DistrictSVsController.cs" />
+    <Compile Remove="Controllers\DivisionController.cs" />
+    <Compile Remove="Controllers\ExchangeHousesController.cs" />
+    <Compile Remove="Controllers\LookTypeController.cs" />
+    <Compile Remove="Controllers\LookupController.cs" />
+    <Compile Remove="Controllers\MailAndMessageController.cs" />
+    <Compile Remove="Controllers\ManualTransactionEntryController.cs" />
+    <Compile Remove="Controllers\MembershipCommissionsController.cs" />
+    <Compile Remove="Controllers\MembershipsController.cs" />
+    <Compile Remove="Controllers\PaymentModesController.cs" />
+    <Compile Remove="Controllers\TestKeysController.cs" />
+    <Compile Remove="Controllers\ThanaController.cs" />
+    <Compile Remove="Controllers\TimeZoneController.cs" />
+    <Compile Remove="Models\AApplicationUser.cs" />
+    <Compile Remove="Models\ModeOfPayment.cs" />
+    <Compile Remove="Models\Thana.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\SettlementRule\Index.cshtml" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" PrivateAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="Serilog" Version="2.6.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="5.1.0" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.8.2" />
+    <PackageReference Include="toastr" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Agent\Controllers\" />
+    <Folder Include="Areas\Agent\Data\" />
+    <Folder Include="Areas\Agent\Models\" />
+    <Folder Include="Areas\Agent\Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Shared\_Login.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MerchantPortal.BusinessServices\MerchantPortal.BusinessServices.csproj" />
+    <ProjectReference Include="..\MerchantPortal.Data\MerchantPortal.Data.csproj" />
+  </ItemGroup>
+
+</Project>
